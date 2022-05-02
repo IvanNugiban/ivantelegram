@@ -1,0 +1,44 @@
+.wrapper {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: rgba(128, 128, 128, 0.185);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.8s all;
+}
+
+.active {
+	transition: 0.8s all;
+	opacity: 1;
+	visibility: visible;
+}
+
+.DevConsole {
+	position: relative;
+	background-color: white;
+	padding: 50px 20px 20px 20px;
+	text-align: center;
+}
+
+.title {
+	font-size: 30px;
+	font-weight: 700;
+	font-family: 'Courier New', Courier, monospace;
+}
+.addContact {
+	margin-top: 10px;
+}
+
+.link {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: indigo ;
+	display: inline-block;
+	margin-top: 10px;
+}

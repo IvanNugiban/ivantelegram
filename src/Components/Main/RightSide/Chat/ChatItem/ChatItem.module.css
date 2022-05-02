@@ -1,0 +1,18 @@
+.ChatItem {
+	display: inline-block;
+	width: 200px;
+	align-items: center;
+text-align: center;
+	display: flex;
+	flex-direction: column;
+	color: rgb(104, 103, 103);
+	background-color: aqua;
+	padding: 10px;
+	border-radius: 20px;
+	margin-bottom: 10px;
+}
+
+.ChatItem span:first-child {
+	font-size: 20px;
+	margin-bottom: 10px;
+}

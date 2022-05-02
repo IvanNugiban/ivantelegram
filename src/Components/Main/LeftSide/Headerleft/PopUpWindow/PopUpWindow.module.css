@@ -1,0 +1,25 @@
+.wrapper {
+	position: absolute;
+	top: 50px;
+	left: 20px;
+	z-index: 999;
+	width: 270px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2px 2px inset #F3F3F3;
+}
+
+.wrapper.dark {
+	box-shadow: 1px 1px 2px 2px inset #1D1D1D;
+	
+	background-color: #212121;
+}
+
+.active {
+	display: block;
+}
+
+.PopUpWindow {
+	position: relative;
+	padding: 10px 5px;
+}

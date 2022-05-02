@@ -1,0 +1,15 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: #fff;
+	padding: 15px;
+	position: relative;
+	border-radius: 10px;
+	visibility: visible;
+	opacity: 1;
+}
+.form {
+	width: 300px;
+}
+

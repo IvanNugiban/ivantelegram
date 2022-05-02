@@ -1,0 +1,26 @@
+.CancelButton {
+	position: absolute;
+	right: 0;
+	top:0;
+	width: 32px;
+	height: 32px;
+	opacity: 0.3;
+	}
+	.CancelButton:hover {
+	opacity: 1;
+	}
+	.CancelButton:before,
+	 .CancelButton:after {
+	position: absolute;
+	left: 15px;
+	content: ' ';
+	height: 33px;
+	width: 2px;
+	background-color: #333;
+	}
+	.CancelButton:before {
+	transform: rotate(45deg);
+	}
+	.CancelButton:after {
+	transform: rotate(-45deg);
+	}

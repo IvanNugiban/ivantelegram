@@ -1,0 +1,53 @@
+.Contact {
+	margin: 5px 10px 0 0;
+	transition: all 0.2s;
+	max-width: 390px;
+	padding: 10px;
+	border-radius: 20px;
+	display: flex;
+	position: relative;
+}
+
+.Contact img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+
+.Contact__text {
+	display: flex;
+	padding-left: 10px;
+	flex-direction: column;
+}
+.Contact__text span:first-child {
+	font-size: larger;
+	font-weight: bold;
+}
+
+.Contact__text span:last-child {
+	margin-top: 15px;
+}
+
+.Contact__time {
+position: absolute;
+right: 30px;
+top: 10px;
+}
+.Contact:hover {
+	transition: 0.5s all;
+	background-color: rgba(226, 221, 221, 0.418);
+}
+.Contact.dark {
+	color: #AAA598;
+}
+.active {
+	background-color: #229ED9;	color: white;
+	}
+	
+	.active:hover {
+		background-color: #229ED9;
+	}
+	.active.dark {
+		background-color: #8774E1;
+		color: white;
+	}

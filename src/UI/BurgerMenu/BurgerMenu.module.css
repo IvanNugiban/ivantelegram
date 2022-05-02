@@ -1,0 +1,17 @@
+
+.BurgerMenu {
+	padding: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+
+
+.BurgerMenu:hover {
+background-color: #f4f4f45b;
+
+}
+
+.BurgerMenu__img {
+	width: 20px;
+}

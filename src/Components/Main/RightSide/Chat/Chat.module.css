@@ -1,0 +1,21 @@
+.container {
+	width: 100%;
+	overflow: auto;
+	height: 100%;
+	position: relative;
+	padding-top: 100px;
+}
+
+.Chat {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+
+.Chat__form {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	bottom: 10px;
+	width: 700px;
+}

@@ -1,0 +1,10 @@
+.MyInput {
+	display: inline-block;
+	min-height: 30px;
+	width: 100%;
+	border-radius: 20px;	
+	border-width: 0;
+	outline: 1px solid gray;
+	padding-left: 40px;
+}
+

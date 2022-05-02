@@ -1,0 +1,51 @@
+.arrowAnim {
+	width: 10px;
+	height: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+ }
+ 
+ .arrow {
+	width: 5px;
+	height: 5px;
+	border: 5px solid;
+	border-color: black transparent transparent black;
+	transform: rotate(-45deg);
+ }
+ 
+ 
+ .arrowSliding {
+	position: absolute;
+	left: 20px;
+	top: 7px;
+	-webkit-animation: slide 4s linear infinite; 
+			  animation: slide 4s linear infinite;
+ }
+ 
+ .delay1 {
+	-webkit-animation-delay: 1s; 
+	  animation-delay: 1s;
+ }
+ .delay2 {
+	-webkit-animation-delay: 2s; 
+	  animation-delay: 2s;
+ }
+ .delay3 {
+	-webkit-animation-delay: 3s; 
+	  animation-delay: 3s;
+ }
+ 
+ @-webkit-keyframes slide {
+	  0% { opacity:0; transform: translateX(15px); }	
+	 20% { opacity:1; transform: translateX(9px); }	
+	 80% { opacity:1; transform: translateX(-9px); }	
+	100% { opacity:0; transform: translateX(-15px); }	
+ }
+ @keyframes slide {
+	  0% { opacity:0; transform: translateX(15px); }	
+	 20% { opacity:1; transform: translateX(9px); }	
+	 80% { opacity:1; transform: translateX(-9px); }	
+	100% { opacity:0; transform: translateX(-15px); }	
+ }

@@ -1,0 +1,29 @@
+.PopUpItem {
+	display: flex;
+	position: relative;
+	z-index: 999;
+	align-items: center;
+padding: 5px 10px;
+cursor: pointer;
+}
+
+.PopUpItem:hover {
+	background-color: #F4F4F4;
+}
+
+.PopUpItem.dark:hover {
+	background-color: #2B2B2B;
+}
+
+.logo {
+	margin-right: 30px;
+}
+
+.logo img {
+	width: 30px;
+}
+.text {
+font-size: large;
+font-family: sans-serif;
+margin-right: 30px;
+}
