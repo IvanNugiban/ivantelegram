@@ -11,9 +11,10 @@ const AppRouter = () => {
 	const [user, loading] = useAuthState(auth);
 	if (loading) return <Loader />
 	return (
-		<Routes>
+
+		<Routes  >
 			{(user) ?
-				PrivateRoutes.map(({ path, element }) => <Route key={path} path={path} element={element} />) :
+				PrivateRoutes.map(({ path, element }) => <Route   key={path} path={path} element={element} />) :
 
 
 				PublicRoutes.map(({ path, element }) => <Route key={path} path={path} element={element} />)
