@@ -7,15 +7,26 @@
 }
 
 .Chat {
+	position: relative;
 	max-width: 800px;
+	padding-bottom: 60px;
 	margin: 0 auto;
 }
 
 
 .Chat__form {
-	display: flex;
+	display: block;
+	z-index: 999;
 	align-items: center;
 	position: fixed;
+padding-left: 10px;
 	bottom: 10px;
-	width: 700px;
+	width: 50%;
+	
+}
+
+input {
+	height: 50px;
+	font-size: 21px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

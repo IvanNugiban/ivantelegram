@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import UseInput from '../../../../Hooks/useInput'
 import MyInput from '../../../../UI/MyInput/MyInput'
 import cl from "./Chat.module.css"
@@ -8,13 +8,12 @@ import Loader from '../../../../UI/Loader/Loader'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from 'firebase/compat/app'
 import ChatItem from './ChatItem/ChatItem'
-import MyButton from "../../../../UI/MyButton/MyButton"
 
 const Chat = () => {
 	const auth = useSelector(state => state.firebaseStore.auth);
 	const firestore = useSelector(state => state.firebaseStore.firestore);
 	const [user] = useAuthState(auth)
-	const { value, onChange, setValue } = UseInput('')
+	const { bind, clear } = UseInput('')
 
 
 	// useEffect(() => {
@@ -30,18 +29,18 @@ const Chat = () => {
 		firestore.collection("messages").orderBy("createdAt")
 	)
 
-	async function addMessage(e) {
-		if (value) {
+	async function addMessage() {
+		if (bind.value) {
 			firestore.collection("messages").add({
 				uid: user.uid,
 				displayName: user.displayName,
 				photoURl: user.photoURL,
-				text: value,
+				text: bind.value,
 				createdAt: firebase.firestore.FieldValue.serverTimestamp()
 			}
 			)
 		}
-		setValue('')
+		clear()
 
 
 	}
@@ -55,11 +54,10 @@ const Chat = () => {
 					messages.map(message => <ChatItem key={message.text} message={message} user={user} />)
 				}
 				<form onSubmit={(e) => e.preventDefault()} className={cl.Chat__form}>
-					<MyInput value={value} onChange={onChange} style={{ height: 55 }}></MyInput>
-					<MyButton onClick={addMessage}>Send</MyButton>
+					<MyInput placeholder="Message" {...bind}></MyInput>
 				</form>
 			</div>
-		</div>
+		</div >
 	)
 }
 

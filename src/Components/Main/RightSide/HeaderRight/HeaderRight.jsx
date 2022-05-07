@@ -10,10 +10,10 @@ const HeaderRight = ({ theme, contact }) => {
 	return (
 		<div className={`${cl.headerRight} ${cl[theme]}`}>
 			<div className={cl.info}>
-				<img src={contact.logo}></img>
+				<img src={contact.logo} alt=''></img>
 				<div className={cl.header__text}>
 					<span className={cl[theme]}>{contact.name}</span>
-					<span>Online</span>
+					<span className={cl[theme]}>Online</span>
 				</div>
 			</div>
 			<div >
@@ -21,7 +21,7 @@ const HeaderRight = ({ theme, contact }) => {
 				<img className={cl.icon} src={search} alt="" />
 				<img className={cl.icon} src={ellipsis} alt="" />
 			</div>
-		</div>
+		</div >
 	)
 }
 

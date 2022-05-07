@@ -5,7 +5,10 @@ const UseInput = (initualValue) => {
 	function onChange(e) {
 		setValue(e.target.value);
 	}
-	return { value, onChange, setValue };
+	function clear() {
+		setValue('')
+	}
+	return { bind: { value, onChange }, clear };
 }
 
 export default UseInput

@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react'
 import LeftSide from './LeftSide/LeftSide';
 import RightSide from './RightSide/RightSide';
 import DevConsole from './DevConsole/DevConsole';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme } from '../../redax/reducers/menuOptions';
 
 const Main = () => {
-
+	const [choosenContact, setChoosenContact] = useState(undefined);
+	const dispatch = useDispatch();
 	const contacts = useSelector(state => state.contacts.contacts)
-
 	const theme = useSelector(state => state.options.theme)
 
-	const [choosenContact, setChoosenContact] = useState(undefined);
-
+	useEffect(() => {
+		// For light theme
+		const DarkTheme = JSON.parse(localStorage.getItem("Dark Mode"));
+		dispatch(changeTheme(DarkTheme))
+	}, [])
 
 	function choosenContactSetter(contact) {
 		setChoosenContact(contact)

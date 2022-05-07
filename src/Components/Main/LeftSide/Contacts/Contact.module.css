@@ -1,3 +1,9 @@
 .wrapper {
 	padding: 10px;
 }
+.wrapper h3 {
+	color: black;
+	text-align: center;
+	vertical-align:middle;
+	font-size: 20px;
+}

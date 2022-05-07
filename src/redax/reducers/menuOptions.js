@@ -1,9 +1,15 @@
 import moonImg from "../../img/moon.png"
 import exitImg from "../../img/exit.png"
 
+const LOGIN = "LOGIN"
 
-
-const changeTheme = (payload) => {
+export const changeTheme = (payload) => {
+	if (payload === true) {
+		document.body.className = "dark"
+	}
+	else {
+		document.body.className = ""
+	}
 	return { type: changeTheme, payload }
 }
 
@@ -36,10 +42,14 @@ export const menuOptions = (state = InitialState, action) => {
 			else return { ...state, theme: "light" };
 		case exit:
 			return { ...state, logined: false }
+		case LOGIN:
+			return { ...state, logined: true }
 		default:
 			return state;
 	}
 
 }
 
-
+export const login = (payload) => {
+	return { type: LOGIN, payload }
+}

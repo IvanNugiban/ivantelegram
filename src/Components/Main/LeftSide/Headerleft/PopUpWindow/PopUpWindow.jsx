@@ -3,14 +3,14 @@ import PopUpItem from './PopUpItem/PopUpItem'
 import cl from './PopUpWindow.module.css'
 import { useSelector } from 'react-redux'
 
-const PopUpWindow = ({ setClickState, theme }) => {
+const PopUpWindow = ({ setClicked, theme }) => {
 
 	const options = useSelector(state => state.options.options);
 	const logined = useSelector(state => state.options.logined)
 	const auth = useSelector(state => state.firebaseStore.auth)
 
 	function closePopUpWindow(e) {
-		if (!e.target.closest("#PopUpWindow")) setClickState(false)
+		if (!e.target.closest("#PopUpWindow")) setClicked(false)
 	}
 
 

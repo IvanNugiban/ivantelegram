@@ -1,22 +1,41 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import MyButton from '../../UI/MyButton/MyButton'
+import {useDispatch, useSelector} from 'react-redux'
+import AnimatedButton from '../../UI/AnimatedButton/AnimatedButton'
 import cl from './Login.module.css'
 import firebase from 'firebase/compat/app'
-
+import {login} from '../../redax/reducers/menuOptions'
+import telegramImg from '../../img/telegram.png'
+import {useCollectionData} from 'react-firebase-hooks/firestore'
+import Loader from '../../UI/Loader/Loader'
 
 const Login = () => {
-	const auth = useSelector(state => state.firebaseStore.auth)
+	const auth = useSelector(state => state.firebaseStore.auth);
+	const firestore = useSelector(state => state.firebaseStore.firestore);
+	const dispatch = useDispatch();
+
+	const [users, loading] = useCollectionData(
+		firestore.collection("users").orderBy("createdAt")
+	)
 
 	async function loginWithGoogle() {
-		const provider = await new firebase.auth.GoogleAuthProvider();
-		const { user } = auth.signInWithPopup(provider);
+		const provider = new firebase.auth.GoogleAuthProvider();
+		try {
+			const { user } = await auth.signInWithPopup(provider);
+			dispatch(login());
+
+		} catch {
+			alert("You canceled your registration")
+		}
 	}
+
+	if (loading) return <Loader />
 
 	return (
 		<div className={cl.Login} >
-			<h1>Alpha v1</h1>
-			<MyButton onClick={loginWithGoogle}>Login by google</MyButton>
+			<h1>Telegram copy</h1>
+			<h5>By IvanNugiban</h5>
+			<img src={telegramImg}></img>
+			<AnimatedButton onClick={loginWithGoogle}>Login</AnimatedButton>
 
 		</div>
 
