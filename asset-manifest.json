@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/ivantelegram/static/css/main.4a34a9fc.css",
-    "main.js": "/ivantelegram/static/js/main.f1a2f040.js",
-    "static/media/about.jpeg": "/ivantelegram/static/media/about.170c5ec321a5df747eaf.jpeg",
-    "static/media/call.png": "/ivantelegram/static/media/call.914389d41e92e385bd30.png",
-    "static/media/moon.png": "/ivantelegram/static/media/moon.8850298500322c4555b7.png",
-    "static/media/search.png": "/ivantelegram/static/media/search.06aaae4d2daacad0d8f2.png",
-    "static/media/telegram.png": "/ivantelegram/static/media/telegram.db77cedc5538f840e4f1.png",
-    "static/media/search.svg": "/ivantelegram/static/media/search.22075a79917f4fa105aaeab98e950815.svg",
-    "index.html": "/ivantelegram/index.html",
-    "main.4a34a9fc.css.map": "/ivantelegram/static/css/main.4a34a9fc.css.map",
-    "main.f1a2f040.js.map": "/ivantelegram/static/js/main.f1a2f040.js.map"
+    "main.css": "/IvanNugiban/ivantelegram/static/css/main.b4c1d8a7.css",
+    "main.js": "/IvanNugiban/ivantelegram/static/js/main.cb144e5c.js",
+    "static/media/about.jpeg": "/IvanNugiban/ivantelegram/static/media/about.170c5ec321a5df747eaf.jpeg",
+    "static/media/call.png": "/IvanNugiban/ivantelegram/static/media/call.914389d41e92e385bd30.png",
+    "static/media/moon.png": "/IvanNugiban/ivantelegram/static/media/moon.8850298500322c4555b7.png",
+    "static/media/search.png": "/IvanNugiban/ivantelegram/static/media/search.06aaae4d2daacad0d8f2.png",
+    "static/media/telegram.png": "/IvanNugiban/ivantelegram/static/media/telegram.db77cedc5538f840e4f1.png",
+    "static/media/search.svg": "/IvanNugiban/ivantelegram/static/media/search.22075a79917f4fa105aaeab98e950815.svg",
+    "index.html": "/IvanNugiban/ivantelegram/index.html",
+    "main.b4c1d8a7.css.map": "/IvanNugiban/ivantelegram/static/css/main.b4c1d8a7.css.map",
+    "main.cb144e5c.js.map": "/IvanNugiban/ivantelegram/static/js/main.cb144e5c.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a34a9fc.css",
-    "static/js/main.f1a2f040.js"
+    "static/css/main.b4c1d8a7.css",
+    "static/js/main.cb144e5c.js"
   ]
 }
