@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { changeContacts, defaultContactsState } from '../../../../../redax/reducers/contacts';
 
 const SearchBar = ({ theme }) => {
-	const { bind, clear } = UseInput("");
+	const { bind} = UseInput("");
 	const dispatch = useDispatch();
 	const searchedContacts = useRef();
 	useMemo(() => {

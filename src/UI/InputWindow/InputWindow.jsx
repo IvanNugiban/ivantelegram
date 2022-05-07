@@ -1,8 +1,5 @@
 import React from 'react'
-import MyButton from '../MyButton/MyButton';
-import { MyInput } from '../MyInput/MyInput';
-import cl from "./InputWindow.module.css"
-import ReturnButton from '../ReturnButton/ReturnButton';
+import {MyInput} from '../MyInput/MyInput';
 
 const InputWindow = ({ data, clickFunc, setState }) => {
 

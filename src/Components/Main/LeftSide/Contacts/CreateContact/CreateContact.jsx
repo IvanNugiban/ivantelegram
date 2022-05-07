@@ -8,7 +8,7 @@ const CreateContact = ({ theme, contact, index, click, active }) => {
 	else classes = [cl.Contact, cl[theme]]
 	return (
 		<div onClick={click} id={index} className={classes.join(" ")} >
-			<img src={contact.logo}></img>
+			<img src={contact.logo} alt=''></img>
 			<div className={cl.Contact__text}>
 				<span>{contact.name}</span>
 				<span>{contact.text}</span>

@@ -15,7 +15,7 @@ const DevConsole = () => {
 		setChoosenElement(e.target.id)
 	}
 	function keyCheck(e) {
-		if (e.altKey && e.key == "c") {
+		if (e.altKey && e.key === "c") {
 			setClasses([...classes, cl.active]);
 		}
 	}

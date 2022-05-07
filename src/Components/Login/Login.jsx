@@ -34,7 +34,7 @@ const Login = () => {
 		<div className={cl.Login} >
 			<h1>Telegram copy</h1>
 			<h5>By IvanNugiban</h5>
-			<img src={telegramImg}></img>
+			<img src={telegramImg} alt=""></img>
 			<AnimatedButton onClick={loginWithGoogle}>Login</AnimatedButton>
 
 		</div>
