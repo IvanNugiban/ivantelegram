@@ -1,0 +1,32 @@
+.Form {
+	position: relative;
+	width: 440px;
+	margin-left: 20px;
+	padding-right: 8px;
+}
+
+.Form input {
+	padding-left: 50px;
+	outline: 1px solid #E3E5E9;
+	font-family: sans-serif;
+	height: 43px;
+	font-size: 19px;
+}
+
+.Form.dark input {
+	outline: 1px solid #292929;
+	background-color: #181818;
+
+}
+
+.searchIcon {
+	left: 15px;
+	top: 10px;
+	position: absolute;
+
+}
+
+.searchIcon img {
+	width: 20px;
+
+}
