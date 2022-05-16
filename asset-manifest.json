@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ivantelegram/static/css/main.4998974d.css",
-    "main.js": "/ivantelegram/static/js/main.ea61cb07.js",
+    "main.js": "/ivantelegram/static/js/main.d5268f72.js",
     "static/media/about.jpeg": "/ivantelegram/static/media/about.170c5ec321a5df747eaf.jpeg",
     "static/media/call.png": "/ivantelegram/static/media/call.914389d41e92e385bd30.png",
     "static/media/moon.png": "/ivantelegram/static/media/moon.8850298500322c4555b7.png",
@@ -10,10 +10,10 @@
     "static/media/search.svg": "/ivantelegram/static/media/search.22075a79917f4fa105aaeab98e950815.svg",
     "index.html": "/ivantelegram/index.html",
     "main.4998974d.css.map": "/ivantelegram/static/css/main.4998974d.css.map",
-    "main.ea61cb07.js.map": "/ivantelegram/static/js/main.ea61cb07.js.map"
+    "main.d5268f72.js.map": "/ivantelegram/static/js/main.d5268f72.js.map"
   },
   "entrypoints": [
     "static/css/main.4998974d.css",
-    "static/js/main.ea61cb07.js"
+    "static/js/main.d5268f72.js"
   ]
 }
