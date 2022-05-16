@@ -1,32 +1,42 @@
-import React, { useRef } from 'react'
+import React, {useMemo} from 'react';
 import CreateContact from './CreateContact/CreateContact';
-import cl from "./Contact.module.css"
+import cl from "./Contact.module.css";
+import {shallowEqual, useDispatch} from "react-redux";
+import {setChosenContactIdAction} from "../../../../redax/reducers/contacts";
+import Loader from "../../../../UI/Loader/Loader";
 
-const Contact = ({ contacts, choosenContactSetter, theme }) => {
+const Contact = ({ contacts,chosenContactId ,  theme, user }) => {
+const sortedContacts = contacts.filter((contact) => contact.uid !== user.uid);
+const dispatch = useDispatch();
 
-	const prevId = useRef(undefined)
-
-	function click(e) {
-		const id = e.target.closest("div[id]").id;
-		if (contacts[id].active) return;
-		else if (contacts[prevId.current]) contacts[prevId.current].active = false;
-		contacts[id].active = true;
-		prevId.current = id;
-		choosenContactSetter(contacts[id])
+const selectActiveContact = useMemo(() => {
+	let previousId;
+	return (id) => {
+		if (shallowEqual(previousId, id)) return;
+		dispatch(setChosenContactIdAction(id));
+		previousId=id;
 	}
+}, [])
+
+
+	if (!sortedContacts) return <Loader/>
+
 	return (
 		<div className={theme}>
-			<div className={cl.wrapper}  >
+ 			<div onClick={(e) => {
+				 const element = e.target.closest('div[class*=Contact_item]');
+				 if (element) selectActiveContact(element.id)
+			}}
+				 className={cl.wrapper}  >
 				{
-					(contacts.length) ?
-						contacts.map((contact, index) => {
+					(sortedContacts.length) ?
+						sortedContacts.map((contact, index) => {
 
-							return <CreateContact theme={theme} active={contact.active} key={index} contact={contact} index={index} click={click} />
+							return <CreateContact chosenContactId={chosenContactId } theme={theme} id={contact.uid}  key={index} contact={contact}   />
 						}) : <h3>There are no contacts yet</h3>
 				}
 			</div >
 		</div>
 	)
 }
-
 export default Contact;

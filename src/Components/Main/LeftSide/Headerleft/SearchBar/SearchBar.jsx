@@ -1,26 +1,29 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import cl from './SearchBar.module.css'
+import React, {useCallback, useEffect} from 'react';
+import cl from './SearchBar.module.css';
 import MyInput from '../../../../../UI/MyInput/MyInput';
 import UseInput from '../../../../../Hooks/useInput';
-import searchIcon from '../../../../../svg/search.svg'
-import { useDispatch } from 'react-redux';
-import { changeContacts, defaultContactsState } from '../../../../../redax/reducers/contacts';
+import searchIcon from '../../../../../svg/search.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {searchContactsAction} from '../../../../../redax/reducers/contacts';
+import {ifIncludes} from "../../../../../utils/functions";
 
 const SearchBar = ({ theme }) => {
 	const { bind} = UseInput("");
 	const dispatch = useDispatch();
-	const searchedContacts = useRef();
-	useMemo(() => {
-		searchedContacts.current = defaultContactsState.contacts.filter(contact => (contact.text.toLocaleLowerCase().includes(bind.value.toLocaleLowerCase()) || contact.name.toLocaleLowerCase().includes(bind.value.toLocaleLowerCase())))
-	}, [bind.value])
+	const contacts = useSelector(state => state.contacts.contacts);
 
-	useEffect(() => {
-		dispatch(changeContacts(searchedContacts.current))
-	}, [searchedContacts.current])
+	const search = useCallback(() => {
+		return	contacts.filter(contact => ifIncludes.call(null, contact.text, bind.value) || ifIncludes.call(null, contact.displayName, bind.value))
+	}, [bind.value]);
 
+
+	useEffect(()=> {
+			dispatch(searchContactsAction(search()))
+		},
+	[dispatch, search])
 
 	return (
-		<div >
+		<div className={cl.wrapper} >
 			<form className={`${cl.Form} ${cl[theme]}`} >
 				<label className={cl.searchIcon} htmlFor="search"><img src={searchIcon} alt="" /></label>
 				<MyInput {...bind} name="search" placeholder="Search" type="text" />

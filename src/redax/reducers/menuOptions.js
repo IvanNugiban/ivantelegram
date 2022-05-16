@@ -1,21 +1,23 @@
 import moonImg from "../../img/moon.png"
 import exitImg from "../../img/exit.png"
+import {ASYNC_EXIT} from "../../utils/constants";
 
-const LOGIN = "LOGIN"
-
+const LOGIN = "LOGIN";
+const CHANGE_THEME = "CHANGE_THEME"
+const USER_EXIT ="USER_EXIT";
 export const changeTheme = (payload) => {
-	if (payload === true) {
-		document.body.className = "dark"
-	}
-	else {
-		document.body.className = ""
-	}
-	return { type: changeTheme, payload }
+
+	if (payload.toggled) document.body.className = "dark"
+	else document.body.className = ""
+	return { type: CHANGE_THEME, payload }
 }
 
-const exit = (payload) => {
-	return { type: exit, payload }
+export const exit = (user) => {
+	return {type: USER_EXIT, user}
 }
+
+export const asyncExit = (payload) => ({type: ASYNC_EXIT, payload })
+export const login = (payload) =>({ type: LOGIN, payload });
 
 const InitialState = {
 	options: [
@@ -28,7 +30,7 @@ const InitialState = {
 		{
 			logo: exitImg,
 			text: "Exit",
-			func: exit,
+			func: asyncExit,
 			SwitcherNeeded: false
 		}
 	],
@@ -37,10 +39,10 @@ const InitialState = {
 }
 export const menuOptions = (state = InitialState, action) => {
 	switch (action.type) {
-		case changeTheme:
-			if (action.payload) return { ...state, theme: "dark" }
+		case CHANGE_THEME:
+			if (action.payload.toggled) return { ...state, theme: "dark" }
 			else return { ...state, theme: "light" };
-		case exit:
+		case USER_EXIT:
 			return { ...state, logined: false }
 		case LOGIN:
 			return { ...state, logined: true }
@@ -50,6 +52,5 @@ export const menuOptions = (state = InitialState, action) => {
 
 }
 
-export const login = (payload) => {
-	return { type: LOGIN, payload }
-}
+
+

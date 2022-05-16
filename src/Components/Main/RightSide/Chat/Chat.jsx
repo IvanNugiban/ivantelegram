@@ -1,64 +1,80 @@
-import React from 'react'
-import UseInput from '../../../../Hooks/useInput'
-import MyInput from '../../../../UI/MyInput/MyInput'
-import cl from "./Chat.module.css"
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { useSelector } from "react-redux"
-import Loader from '../../../../UI/Loader/Loader'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import firebase from 'firebase/compat/app'
-import ChatItem from './ChatItem/ChatItem'
+import React, {useEffect, useRef, useState} from 'react';
+import UseInput from '../../../../Hooks/useInput';
+import MyInput from '../../../../UI/MyInput/MyInput';
+import cl from "./Chat.module.css";
+import {useCollectionData} from 'react-firebase-hooks/firestore';
+import Loader from '../../../../UI/Loader/Loader';
+import {firestore} from "../../../../index";
+import {getDocument, setDocument} from "../../../../utils/functions";
+import SendButton from "../../../../UI/SendButton/SendButton";
+import ChatItem from "./ChatItem/ChatItem";
+import useDocumentListener from "../../../../Hooks/useDocumentListener";
 
-const Chat = () => {
-	const auth = useSelector(state => state.firebaseStore.auth);
-	const firestore = useSelector(state => state.firebaseStore.firestore);
-	const [user] = useAuthState(auth)
-	const { bind, clear } = UseInput('')
+const Chat = ({user, currentUser, theme}) => {
+    const {bind, clear} = UseInput('');
+    const [personalMessages, setPersonalMessages] = useState([]);
+    const prevInputValue = useRef(bind.value);
+    useEffect(() => {
+        console.log("work");
 
+        async function getMessages() {
+            const messages = await getDocument("messages", `${user.uid} ${currentUser.uid}`);
+            setPersonalMessages(messages);
+        }
+        getMessages();
+    }, [currentUser.uid, user.uid]);
 
-	// useEffect(() => {
-	// 	document.body.addEventListener("keydown", addMessage)
+    useDocumentListener("messages", `${user.uid} ${currentUser.uid}`, (data) => setPersonalMessages(data) );
 
+    const [loading] = useCollectionData(
+        firestore.collection("messages").orderBy("createdAt")
+    );
 
-	// 	return () => {
-	// 		document.body.removeEventListener("keydown", addMessage)
-	// 	}
-	// }, [])
+    async function addMessage() {
+        if (bind.value) {
+            const data = (personalMessages) ? personalMessages.data : [];
+            prevInputValue.current = bind.value;
+            clear();
+            await setDocument("messages", `${user.uid} ${currentUser.uid}`, {
+                data: [...data,
+                    {
+                        message: [prevInputValue.current],
+                        user: {
+                            uid: user.uid,
+                            displayName: user.displayName,
+                            photoURL: user.photoURL,
+                        }
+                    }
+                ]
+            });
+            await setDocument("messages", `${currentUser.uid} ${user.uid}`, {
+                data: [...data,
+                    {
+                        message: [prevInputValue.current],
+                        user: {
+                            uid: user.uid,
+                            displayName: user.displayName,
+                            photoURL: user.photoURL,
+                        }
+                    }
+                ]
+            });
+        }
+    }
+    if (loading) return <Loader/>;
+    return (
+        <div className={cl.container}>
+            <div className={cl.Chat}>
+                {
+                    (personalMessages) ? personalMessages.data.map((obj, index) => <ChatItem theme={theme} key={index} message={obj.message} user={user} sender={obj.user}/>) : <span></span>
+                }
+                <form   action="" onSubmit={(e) => e.preventDefault()} className={`${cl.Chat__form} ${cl[theme]}`}>
+                    <MyInput style={{marginRight: 10}} type="text" {...bind}></MyInput>
+                    <SendButton onClick={addMessage}/>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-	const [messages, loading] = useCollectionData(
-		firestore.collection("messages").orderBy("createdAt")
-	)
-
-	async function addMessage() {
-		if (bind.value) {
-			firestore.collection("messages").add({
-				uid: user.uid,
-				displayName: user.displayName,
-				photoURl: user.photoURL,
-				text: bind.value,
-				createdAt: firebase.firestore.FieldValue.serverTimestamp()
-			}
-			)
-		}
-		clear()
-
-
-	}
-
-	if (loading) return <Loader />
-
-	return (
-		<div className={cl.container}>
-			<div className={cl.Chat}>
-				{
-					messages.map(message => <ChatItem key={message.text} message={message} user={user} />)
-				}
-				<form onSubmit={(e) => e.preventDefault()} className={cl.Chat__form}>
-					<MyInput placeholder="Message" {...bind}></MyInput>
-				</form>
-			</div>
-		</div >
-	)
-}
-
-export default Chat
+export default Chat;

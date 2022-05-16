@@ -51,14 +51,13 @@ body.dark {
 	grid-template-areas:
 	 'left right';
 	grid-template-rows: 100vh;
-	grid-template-columns: 39% 61%;
+	grid-template-columns: 30% 70%;
 
 }
 
 .LeftSide {
 	grid-area: left;
 	background-color: white;
-	overflow: auto;
 }
 .RightSide {
 	position: relative;

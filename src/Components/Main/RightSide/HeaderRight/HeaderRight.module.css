@@ -1,12 +1,12 @@
 .headerRight {
-	width: 63%;
+width: 70%;
 	display: flex;
 	position: fixed;
 	background-color: white;
 	justify-content: space-between;
 font-family: sans-serif;
 	align-items: center;
-	height: 70px;
+	height: 60px;
 	padding-left: 20px;
 	border-left: 1px solid #DFE1E5;
 	z-index: 999;
@@ -24,8 +24,8 @@ font-family: sans-serif;
 	align-items: center;
 }
 .headerRight img {
-	width: 55px;
-	height: 55px;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 }
 .header__text {
@@ -35,7 +35,7 @@ font-family: sans-serif;
 
 }
 .header__text span:first-child {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
 }
 
@@ -43,7 +43,7 @@ font-family: sans-serif;
 	margin-top: 4px;
 	color: #6CBDF6;
 	text-transform: lowercase;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 

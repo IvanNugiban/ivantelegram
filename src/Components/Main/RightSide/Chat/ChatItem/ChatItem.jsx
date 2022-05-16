@@ -1,19 +1,14 @@
-import React from 'react'
-import cl from './ChatItem.module.css'
+import React from 'react';
+import cl from './ChatItem.module.css';
 
-const ChatItem = ({ message, user }) => {
+const ChatItem = ({message, sender, user, theme}) => {
 
 
-
-	return (
-		<div className={cl.ChatItem} style={{
-			marginLeft: user.uid !== message.uid ? 0 : 600
-		}}>
-			<span>{message.displayName}</span>
-			<span>{message.text}</span>
-
-		</div>
-	)
-}
+    return (
+        <div className={(user.uid !== sender.uid)? `${cl.foreignMessage} ${cl[theme]}` : `${cl.MyMessage} ${cl[theme]}`}>
+            <span>{message}</span>
+        </div>
+)
+};
 
 export default ChatItem;

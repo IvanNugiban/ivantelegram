@@ -1,0 +1,31 @@
+
+.sendBtn{
+    height: 50px;
+    padding: 26px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Open Sans", serif;
+    text-transform: uppercase;
+    background: url(https://i.imgur.com/Th606mh.png) no-repeat scroll   transparent;
+    background-position: bottom -1px left 4px;
+    background-size: 38px 120px;
+    border-radius: 50%;
+    background-color: #3390EC;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.sendBtn:focus {
+    background-position: 2em -5em;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+/* Webfonts */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}

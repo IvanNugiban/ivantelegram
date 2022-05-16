@@ -4,7 +4,7 @@ import cl from "./AddContactWindow.module.css";
 import ReturnButton from "../../../../../UI/ReturnButton/ReturnButton";
 import MyInput from "../../../../../UI/MyInput/MyInput";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../../../../redax/reducers/contacts";
+import { addContactAction } from "../../../../../redax/reducers/contacts";
 
 const AddContactWindow = ({ choosenElement, setChoosenElement }) => {
 
@@ -17,7 +17,7 @@ const AddContactWindow = ({ choosenElement, setChoosenElement }) => {
 	}
 
 	function contactsSetter() {
-		dispatch(addContact({
+		dispatch(addContactAction({
 			name: inputStates.name,
 			text: inputStates.text,
 			time: inputStates.time,

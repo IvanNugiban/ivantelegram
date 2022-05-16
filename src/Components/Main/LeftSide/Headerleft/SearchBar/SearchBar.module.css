@@ -1,32 +1,36 @@
-.Form {
-	position: relative;
-	width: 440px;
-	margin-left: 20px;
-	padding-right: 8px;
+.wrapper {
+    width: 330px;
 }
 
-.Form input {
-	padding-left: 50px;
-	outline: 1px solid #E3E5E9;
-	font-family: sans-serif;
-	height: 43px;
-	font-size: 19px;
+.Form {
+    position: relative;
+    margin-left: 10px;
+    padding-right: 8px;
+}
+
+.Form input{
+   width: 100%;
+    padding-left: 50px;
+    outline: 1px solid #E3E5E9;
+    font-family: sans-serif;
+    height: 40px;
+    font-size: 17px;
 }
 
 .Form.dark input {
-	outline: 1px solid #292929;
-	background-color: #181818;
-
+    outline: 1px solid #292929;
+    background-color: #181818;
+    color: white;
 }
 
 .searchIcon {
-	left: 15px;
-	top: 10px;
-	position: absolute;
+    left: 15px;
+    top: 10px;
+    position: absolute;
 
 }
 
 .searchIcon img {
-	width: 20px;
+    width: 18px;
 
 }

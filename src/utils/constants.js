@@ -1,3 +1,12 @@
 export const LOGIN_ROUTE = "/login";
-export const MAIN_ROTE = ""
-export const ABOUT_ROUTE = "/about"
+export const MAIN_ROTE = "";
+export const ABOUT_ROUTE = "/about";
+export const ASYNC_EXIT = "ASYNC_EXIT"
+export const GET_USERS = "GET_USERS";
+export const SEARCH_USERS = "SEARCH_USERS";
+export const ADD_CONTACT = "ADD_CONTACT";
+export const CHANGE_CONTACTS = "CHANGE_CONTACTS";
+export const INITIALIZE_CONTACTS = "INITIALIZE_CONTACTS";
+export const SET_CHOSEN_CONTACT_ID = "SET_CHOSEN_CONTACT_ID";
+export const SET_CHOSEN_CONTACT = "SET_CHOSEN_CONTACT";
+export const GET_CHOSEN_CONTACT = "GET_CHOSEN_CONTACT";

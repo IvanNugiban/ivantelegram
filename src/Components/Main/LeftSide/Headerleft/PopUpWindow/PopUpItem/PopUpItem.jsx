@@ -4,17 +4,17 @@ import ToggleSwitch from '../../../../../../UI/ToggleSwitch/ToggleSwitch';
 import {useDispatch} from 'react-redux';
 import useToggle from '../../../../../../Hooks/useToggle';
 
-const PopUpItem = ({ theme, logo, text, func, switcherNeeded }) => {
+const PopUpItem = ({ theme, logo, text, func, switcherNeeded,user }) => {
 
 	const dispatch = useDispatch()
 
 
-	const [toggled, toggle] = useToggle(() => JSON.parse((localStorage.getItem(text))));
+	const [toggled, toggle] = useToggle(() => JSON.parse((localStorage.getItem(text) || false)));
 
 
 	function clicked() {
-		dispatch(func(toggled))
 		if (switcherNeeded) toggle()
+		else dispatch(func(user))
 	}
 
 
@@ -22,8 +22,7 @@ const PopUpItem = ({ theme, logo, text, func, switcherNeeded }) => {
 		<div onClick={clicked} className={`${cl.PopUpItem} ${cl[theme]}`} >
 			<span className={cl.logo}><img src={logo} alt="" /></span>
 			<span className={cl.text}>{text}</span>
-
-			{(switcherNeeded) ? < ToggleSwitch dispatch={dispatch} click={clicked} text={text} theme={theme} func={func} togglerState={toggled} /> : <span></span>}
+			{(switcherNeeded) ? < ToggleSwitch user={user} dispatch={dispatch} click={clicked} text={text} theme={theme} func={func} toggled={toggled} /> : <span></span>}
 
 		</div >
 	)

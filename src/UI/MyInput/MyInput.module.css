@@ -1,4 +1,7 @@
 .MyInput {
+	height: 50px;
+	font-size: 21px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	display: inline-block;
 	min-height: 30px;
 	width: 100%;

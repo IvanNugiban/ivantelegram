@@ -1,45 +1,46 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import AnimatedButton from '../../UI/AnimatedButton/AnimatedButton'
 import cl from './Login.module.css'
 import firebase from 'firebase/compat/app'
 import {login} from '../../redax/reducers/menuOptions'
 import telegramImg from '../../img/telegram.png'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
-import Loader from '../../UI/Loader/Loader'
+import {createNewUser} from "../../utils/functions";
+import {auth} from "../../index";
+import {firestore} from "../../index";
+
 
 const Login = () => {
-	const auth = useSelector(state => state.firebaseStore.auth);
-	const firestore = useSelector(state => state.firebaseStore.firestore);
-	const dispatch = useDispatch();
 
-	const [users, loading] = useCollectionData(
-		firestore.collection("users").orderBy("createdAt")
-	)
+    const dispatch = useDispatch();
 
-	async function loginWithGoogle() {
-		const provider = new firebase.auth.GoogleAuthProvider();
-		try {
-			const { user } = await auth.signInWithPopup(provider);
-			dispatch(login());
+    useCollectionData(
+        firestore.collection("users").orderBy("createdAt")
+    )
 
-		} catch {
-			alert("You canceled your registration")
-		}
-	}
 
-	if (loading) return <Loader />
+    async function loginWithGoogle() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+            const {user} = await auth.signInWithPopup(provider);
+            dispatch(login());
+            createNewUser(user);
+        } catch {
+            alert("You canceled your registration")
+        }
+    }
 
-	return (
-		<div className={cl.Login} >
-			<h1>Telegram copy</h1>
-			<h5>By IvanNugiban</h5>
-			<img src={telegramImg} alt=""></img>
-			<AnimatedButton onClick={loginWithGoogle}>Login</AnimatedButton>
+    return (
+        <div className={cl.Login}>
+            <h1>Telegram copy</h1>
+            <h5>By IvanNugiban</h5>
+            <img src={telegramImg} alt=""></img>
+            <AnimatedButton onClick={loginWithGoogle}>Login</AnimatedButton>
 
-		</div>
+        </div>
 
-	)
+    )
 }
 
 export default Login
